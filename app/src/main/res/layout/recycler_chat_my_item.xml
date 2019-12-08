@@ -10,7 +10,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="100dp"
         android:gravity="center_vertical">
 
@@ -22,11 +22,9 @@
             android:layout_alignParentRight="true"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="12dp"
-            android:background="@color/colorPrimary"
+            android:padding="12dp"
+            android:background="@drawable/chat_me_background"
             android:gravity="center_vertical"
-            android:paddingHorizontal="12dp"
             android:text="@{chatData.message}" />
 
     </RelativeLayout>
