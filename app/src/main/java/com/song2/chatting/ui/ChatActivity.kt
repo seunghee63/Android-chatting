@@ -22,7 +22,6 @@ class ChatActivity : AppCompatActivity() {
     lateinit var socket: Socket
     private lateinit var imm : InputMethodManager
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat)
@@ -35,10 +34,7 @@ class ChatActivity : AppCompatActivity() {
 
     fun settingChatUi() {
 
-        dataList.add(ChatData("me", "chatbot", "song","",""))
-        dataList.add(ChatData("you", "chatbot", "song","",""))
-        dataList.add(ChatData("you", "chatbot", "song","",""))
-        dataList.add(ChatData("me", "chatbot", "song","",""))
+        dataList.add(ChatData("you", "hi~~~", "song","",""))
 
         chatAdapter.apply {
             data = dataList
@@ -72,19 +68,15 @@ class ChatActivity : AppCompatActivity() {
         socket.connect()
 
         socket.on("chat-msg",onMessageReceived)
-
-    }
-
-    private val onConnect = Emitter.Listener {
-        //Toast.makeText(applicationContext,"연결",Toast.LENGTH_LONG).show()
-        //TODO
     }
 
     private val onMessageReceived = Emitter.Listener {
 
-        chatAdapter.addItem(ChatData("you",it[0].toString(),"song","",""))
-        //Toast.makeText(applicationContext,"메세지 받음",Toast.LENGTH_LONG).show()
-        //TODO
+        val receiveMessage = it.get(0) as JSONObject
+
+        if(receiveMessage.getString("name").toString() != "song"){
+            chatAdapter.addItem(ChatData("you",receiveMessage.getString("message").toString(),receiveMessage.getString("name").toString(),"",""))
+        }
     }
 
 }
