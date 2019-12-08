@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="chatData"
+            type="com.song2.chatting.data.ChatData" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="100dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_chatyouritem_contents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:padding="8dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center_vertical"
+            android:text="@{chatData.message}"
+            android:textColor="#FFFFFF" />
+    </RelativeLayout>
+</layout>

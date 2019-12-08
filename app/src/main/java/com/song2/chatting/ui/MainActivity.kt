@@ -1,7 +1,8 @@
-package com.song2.chatting
+package com.song2.chatting.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.song2.chatting.R
 
 class MainActivity : AppCompatActivity() {
 
