@@ -34,7 +34,7 @@ class ChatActivity : AppCompatActivity() {
 
     fun settingChatUi() {
 
-        dataList.add(ChatData("you", "hi~~~", "song","",""))
+        dataList.add(ChatData("you", "hi~~~", "song","https://images.otwojob.com/product/x/U/6/xU6PzuxMzIFfSQ9.jpg/o2j/resize/852x622%3E",""))
 
         chatAdapter.apply {
             data = dataList
@@ -75,7 +75,7 @@ class ChatActivity : AppCompatActivity() {
         val receiveMessage = it.get(0) as JSONObject
 
         if(receiveMessage.getString("name").toString() != "song"){
-            chatAdapter.addItem(ChatData("you",receiveMessage.getString("message").toString(),receiveMessage.getString("name").toString(),"",""))
+            chatAdapter.addItem(ChatData("you",receiveMessage.getString("message").toString(),receiveMessage.getString("name").toString(),"https://images.otwojob.com/product/x/U/6/xU6PzuxMzIFfSQ9.jpg/o2j/resize/852x622%3E",""))
         }
     }
 
