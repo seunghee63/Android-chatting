@@ -9,13 +9,16 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var data = arrayListOf<ChatData>()
 
+    private val MY_CHAT = 0
+    private val YOUR_CHAT = 1
+
     override fun getItemViewType(position: Int): Int {
         val chatMessage = data[position]
 
         return if (chatMessage.id=="me") {
-            0
+            MY_CHAT
         } else {
-            1
+            YOUR_CHAT
         }
     }
 
@@ -24,14 +27,14 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         lateinit var viewHolder: RecyclerView.ViewHolder
 
         when (viewType) {
-            0 -> {
+            MY_CHAT -> {
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.recycler_chat_my_item, parent, false)
 
                 return ChatMyViewHolder(view)
 
             }
-            1 -> {
+            YOUR_CHAT -> {
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.recycler_chat_your_item, parent, false)
 
