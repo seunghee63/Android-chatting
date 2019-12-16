@@ -1,31 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="100dp"
+    android:layout_width="match_parent">
 
-    <data>
-
-        <variable
-            name="chatData"
-            type="com.song2.chatting.data.ChatData" />
-    </data>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv_chatmyitem_contents"
+        android:background="@drawable/chat_me_background"
+        android:gravity="center_vertical"
+        android:layout_alignParentRight="true"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:gravity="center_vertical">
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:padding="12dp"
+        android:text="좋은 하루에요!" />
 
-
-        <TextView
-            android:id="@+id/tv_chatmyitem_contents"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="8dp"
-            android:padding="12dp"
-            android:background="@drawable/chat_me_background"
-            android:gravity="center_vertical"
-            android:text="@{chatData.message}" />
-
-    </RelativeLayout>
-</layout>
+</RelativeLayout>
