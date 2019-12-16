@@ -13,6 +13,7 @@ import io.socket.client.Socket
 import io.socket.emitter.Emitter
 import kotlinx.android.synthetic.main.activity_chat.*
 import org.json.JSONObject
+import java.util.*
 
 class ChatActivity : AppCompatActivity() {
 
@@ -72,11 +73,20 @@ class ChatActivity : AppCompatActivity() {
 
     private val onMessageReceived = Emitter.Listener {
 
-        val receiveMessage = it.get(0) as JSONObject
+        val receiveMessage = it[0] as JSONObject
 
-        if(receiveMessage.getString("name").toString() != "song"){
-            chatAdapter.addItem(ChatData("you",receiveMessage.getString("message").toString(),receiveMessage.getString("name").toString(),"https://images.otwojob.com/product/x/U/6/xU6PzuxMzIFfSQ9.jpg/o2j/resize/852x622%3E",""))
+        val tt = object : TimerTask() {
+            override fun run() {
+                runOnUiThread {
+                    if(receiveMessage.getString("name").toString() != "song"){
+                        chatAdapter.addItem(ChatData("you",receiveMessage.getString("message").toString(),receiveMessage.getString("name").toString(),"https://images.otwojob.com/product/x/U/6/xU6PzuxMzIFfSQ9.jpg/o2j/resize/852x622%3E",""))
+                        chatAdapter.notifyDataSetChanged()
+                    }
+                }
+            }
         }
+
+        tt.run()
     }
 
 }

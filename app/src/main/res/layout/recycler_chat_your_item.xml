@@ -21,6 +21,7 @@
             android:layout_height="56dp" />
 
         <TextView
+            android:id="@+id/tv_yourfhatitem_message"
             android:layout_toRightOf="@+id/iv_yourchatitem_profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,5 +32,14 @@
             android:gravity="center_vertical"
             android:text="@{chatData.message}"
             android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_below="@+id/tv_yourfhatitem_message"
+            android:layout_alignStart="@+id/tv_yourfhatitem_message"
+            android:layout_marginStart="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{chatData.user}"
+            android:textColor="#b6b8c3" />
     </RelativeLayout>
 </layout>
