@@ -8,14 +8,29 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.song2.chatting.R
 import com.song2.chatting.adapter.ChatAdapter
 import com.song2.chatting.data.ChatData
-import com.song2.chatting.data.remote.SocketApplication
+import io.socket.client.IO
 import io.socket.client.Socket
 import io.socket.emitter.Emitter
 import kotlinx.android.synthetic.main.activity_chat.*
 import org.json.JSONObject
+import java.net.URISyntaxException
 import java.util.*
 
 class ChatActivity : AppCompatActivity() {
+
+    companion object {
+
+        private val BASE_URL = "https://reactsocketiomo.herokuapp.com/"
+        private lateinit var socket : Socket
+        fun get(): Socket {
+            try {
+                socket = IO.socket(BASE_URL)
+            } catch (e: URISyntaxException) {
+                e.printStackTrace()
+            }
+            return socket
+        }
+    }
 
     private val chatAdapter by lazy { ChatAdapter() }
     private val dataList = arrayListOf<ChatData>()
@@ -38,7 +53,7 @@ class ChatActivity : AppCompatActivity() {
 
     private fun settingSocket() {
 
-        socket = SocketApplication.get()
+        socket = get()
         socket.connect()
 
         socket.on("chat-msg",onMessageReceived)

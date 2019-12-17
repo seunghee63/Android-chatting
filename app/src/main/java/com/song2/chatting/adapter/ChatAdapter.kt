@@ -26,22 +26,22 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         lateinit var viewHolder: RecyclerView.ViewHolder
 
-        when (viewType) {
+        return when (viewType) {
             MY_CHAT -> {
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.recycler_chat_my_item, parent, false)
 
-                return ChatMyViewHolder(view)
-
+                ChatMyViewHolder(view)
             }
             YOUR_CHAT -> {
                 val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.recycler_chat_your_item, parent, false)
 
-                return ChatYourViewHolder(view)
+                ChatYourViewHolder(view)
+            }else -> {
+                viewHolder
             }
         }
-        return viewHolder
     }
 
     override fun getItemCount(): Int {
