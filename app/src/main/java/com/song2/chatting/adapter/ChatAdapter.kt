@@ -58,16 +58,23 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-        val chatMessage = data[position]
+        when (holder){
+            is ChatMyViewHolder -> {
+                holder.binding.chatData = data[position]
+            }
+            is ChatYourViewHolder -> {
+                holder.binding.chatData = data[position]
+            }
+        }
 
-        if (chatMessage.id=="me") {
+/*        if (chatMessage.id=="me") {
             val holderMyViewHolder: ChatMyViewHolder = holder as ChatMyViewHolder
             holderMyViewHolder.binding.chatData = data[position]
 
         } else {
             val holderYourViewHolder: ChatYourViewHolder = holder as ChatYourViewHolder
             holderYourViewHolder.binding.chatData = data[position]
-        }
+        }*/
     }
 
     fun addItem(item: ChatData) {
