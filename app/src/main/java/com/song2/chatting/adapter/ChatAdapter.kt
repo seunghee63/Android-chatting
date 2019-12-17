@@ -50,15 +50,14 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-        val chatMessage = data[position]
-
-        if (chatMessage.id=="me") {
-            val holderMyViewHolder: ChatMyViewHolder = holder as ChatMyViewHolder
-            holderMyViewHolder.onBind(data[position])
-
-        } else {
-            val holderYourViewHolder: ChatYourViewHolder = holder as ChatYourViewHolder
-            holderYourViewHolder.onBind(data[position])
+        when (holder){
+            is ChatMyViewHolder -> {
+                //스마트캐스트
+                holder.onBind(data[position])
+            }
+            is ChatYourViewHolder -> {
+                holder.onBind(data[position])
+            }
         }
     }
 

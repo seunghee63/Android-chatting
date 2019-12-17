@@ -5,6 +5,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.song2.chatting.R
 import com.song2.chatting.data.ChatData
 
@@ -18,6 +20,8 @@ class ChatYourViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         message.text = chatData.message
         user.text = chatData.user
 
-        Glide.with(itemView.context).load(chatData.profile) to profileImage
+        Glide.with(itemView.context).load(chatData.profile)
+            .transform(RoundedCorners(180))
+            .transition(DrawableTransitionOptions.withCrossFade()) to profileImage
     }
 }
